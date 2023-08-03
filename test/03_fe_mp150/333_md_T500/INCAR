@@ -1,0 +1,62 @@
+SYSTEM = Fex5
+NCORE = 2
+
+# IOs
+## ------- Write -------------
+   NWRITE = 2        # what to write in OUTCAR
+   LWAVE = .FALSE.         # the wavefunctions are written to the WAVECAR file at the end of a run.
+   LCHARG = .FALSE.         # charge densities (files CHGCAR and CHG) are written
+   LORBIT = 11           # 11:DOSCAR and lm-decomposed PROCAR
+## ------- Load --------------
+   ISTART = 0        # 0:From-scratch, 1:Restart,  WAVECAR or not. 0 is False.
+   ICHARG = 1         # 1:Read, 0:From-scratch. Read the charge density from CHGCAR file
+
+# Electronic Relaxation
+## --------Necessary----------
+   PREC = Normal    # Low|Medium|High|Normal|Accurate|
+   EDIFF = 1E-06     # eV
+   LREAL = Auto      # False: K-space Small sys;Auto: Real space
+   ALGO  = Fast        # electron minimization algorithm. Fast: mixture of the Davidson and RMM-DIIS algorithm
+   GGA = PE           # Perdew-Burke-Ernzerhof (PBE)
+
+## ---------Option ----------
+   ISMEAR = 1        # Metal
+   SIGMA  = 0.1     # Metal
+   ISPIN  = 2 # magnetism metal
+   MAGMOM = 108*3.5        # initial magnetic moment for each atom
+   ENCUT  = 450                  # eV
+   ISYM   = 0           # 0:MD-Need,2:efficient symmetrization
+   NELM   = 150           # Min_electron steps
+   LMAXMIX = 4
+   
+# Ionic Step
+## -------- Necessary --------
+   ISIF   = 2           # 2:No cell change. 3:Cell change
+   IBRION = 0           # 0:MD, -1:No-update, 1,2:rlx
+   NSW    = 1000      # Ionic steps
+   POTIM  = 1          # fs,time steps
+#   EDIFFG = -0.02     # Negative:MAX-force,Possitive:Energy
+   
+
+## -------- Option -----------
+   IVDW = 10     # 10:DFT-2 method. vdW (dispersion) correction.
+#   MAXMIX = 40
+#   LDIPOL = .TRUE. # for slab dipole
+#   IDIPOL = 3
+   
+
+# MD 
+## -------- Ensenble T.P -------
+   MDALGO   = 2       # Nose-Hoover thermostat
+   TEBEG    = 500     # K, Temperature
+#   PSTRESS = 0.001   # Pressure
+   IWAVPR  = 11        # how orbitals and/or charge densities are extrapolated from one ionic configuration to the next configuration
+#   LANGEVIN_GAMMA   = 1    # friction
+#   LANGEVIN_GAMMA_L = 10     # lattice friction
+#   PMASS   = 10              # lattice mass
+   SMASS   = 0.20
+
+## --------Meta dynamics ----------
+#   HILLS_H = 0.05
+#   HILLS_W = 0.05
+#   HILLS_BIN = 5

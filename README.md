@@ -1,1 +1,1 @@
-# fuji3
+# Toolkit for processing AIMD result from VASP

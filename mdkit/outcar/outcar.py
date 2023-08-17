@@ -1,8 +1,9 @@
 import sys
 import os
-sys.path.append("/Users/bm.fish/vaspmd")
+
 # print(sys.path)
-from mdkit import util
+sys.path.insert(0, sys.path[0]+"/../")
+import util
 
 class Outcar:
 
@@ -74,5 +75,5 @@ if __name__=="__main__":
     print(outcar1)
     # for x in outcar1.energy.keys():
     #     print(x,"\t",len(outcar1.energy[x]))
-    outcar1.write_energy_to_csv("outcar.csv")
+    # outcar1.write_energy_to_csv("outcar.csv")
     

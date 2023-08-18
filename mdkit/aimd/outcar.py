@@ -1,12 +1,12 @@
 import sys
 import os
 
-# print(sys.path)
-sys.path.insert(0, sys.path[0]+"/../")
-import util
+# print(sys.path[0])
+# sys.path.insert(0, sys.path[0]+"/../")
+from mdkit import util
 
 class Outcar:
-
+    
     def __init__(self,outcar_dir:str) -> None:
         self.outcar_dir = outcar_dir
         assert os.path.isfile(self.outcar_dir), f"File {self.outcar_dir} does not exist"
@@ -68,12 +68,22 @@ class Outcar:
         return outstr
 
 
+def energy_run(args):
+    if args.outcar_dir == "OUTCAR":
+        current_directory = os.path.dirname(os.path.abspath(__file__))
+        outcar_dir = os.path.join(current_directory,args.outcar_dir)
+        print(outcar_dir)
+    print("Input args:")
+    print("Plot: ", args.plt)
+    print("Input OUTCAR dir",args.outcar_dir)
+    
+
 if __name__=="__main__":
-    outcar1 = Outcar("test/03_fe_mp150/333_md_T500/OUTCAR")
+    # outcar1 = Outcar("test/03_fe_mp150/333_md_T500/OUTCAR")
     # print(outcar1.energy_keywords)
-    outcar1.read_energy_term()
-    print(outcar1)
+    # outcar1.read_energy_term()
+    # print(outcar1)
     # for x in outcar1.energy.keys():
     #     print(x,"\t",len(outcar1.energy[x]))
     # outcar1.write_energy_to_csv("outcar.csv")
-    
+    print("main")

@@ -56,7 +56,16 @@ def write_data_dict_to_csv(data_dict:dict, csv_dir):
                     line_to_write.append(data_dict[key][i])
             writer.writerow(line_to_write)
 
-    
+
+def check_file_exist(test_result_file_name="results")-> str:
+    file_name = test_result_file_name+".f.out"
+    # Check if the file exists
+    if os.path.isfile(file_name):
+        print(f"The file '{file_name}' exists.")
+    else:
+        warnings.warn(f"The file '{file_name}' does not exist.", RuntimeWarning)
+        # print(f"The file '{file_name}' does not exist.")
+    return file_name
 
 
 if __name__=="__main__":

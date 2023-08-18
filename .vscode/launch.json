@@ -12,8 +12,11 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true,
+            "_pythonArgs": ["-m"],
             "args": ["energy",
-                     "-p"
+                     "-p",
+                     "-i", "test/03_fe_mp150/333_md_T500/OUTCAR"
+
 
             ]
         }

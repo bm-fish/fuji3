@@ -6,7 +6,6 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 # print(sys.path)
 from mdkit.aimd.outcar import energy_run
 
-
 # print(sys.path)
 # sys.path.append("/Users/bm.fish/vaspmd")
 # from mdkit.outcar import outcar
@@ -32,11 +31,10 @@ def main_parser() -> argparse.ArgumentParser:
         "energy", help="Get/plot AIMD energy from OUTCAR file"
     )
     parser_mdenergy.add_argument('-p','--plt',action="store_true", help="Add -p/--plt to generate AIMD energy plot from OUTCAR file")
-    parser_mdenergy.add_argument('-i','--outcar_dir', type=str,default="OUTCAR",help="Input OUTCAR file dir")
+    parser_mdenergy.add_argument('-i','--outcar_dir', type=str,default="./OUTCAR",help="Input OUTCAR file dir")
     parser_mdenergy.set_defaults(func=energy_run)
 
     # ================== Get/plot AIMD energy ===================================
-
 
     return parser
 
@@ -56,6 +54,7 @@ def main():
     except AttributeError:
         parser.print_help()
         sys.exit(0)
+
     args.func(args)
 
 

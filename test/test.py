@@ -10,6 +10,6 @@ import mdkit
 from mdkit.aimd import outcar
 
 outcar1 = outcar.Outcar("test/03_fe_mp150/333_md_T500/OUTCAR")
-
-# print(outcar1)
+outcar1.
+print(outcar1)
 

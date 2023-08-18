@@ -35,12 +35,9 @@ def make_data_dict_from_keyword_dict(input_dict):
             output_dict[key] = value
     return output_dict
 
-def write_data_dict_to_csv(data_dict:dict, csv_dir):
-    len_list_data = []
-    for key, item in data_dict.items():
-        len_list_data.append(len(item))
-    maxlen = max(len_list_data)
-    print(maxlen)
+def write_data_dict_to_csv(data_dict:dict, csv_dir:str):
+    maxlen = get_dict_max_len(data_dict)
+    # print(maxlen)
     with open(csv_dir, 'w', encoding='UTF8', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(list(data_dict.keys()))
@@ -56,17 +53,20 @@ def write_data_dict_to_csv(data_dict:dict, csv_dir):
                     line_to_write.append(data_dict[key][i])
             writer.writerow(line_to_write)
 
+def check_outcar_exist(outcar_dir:str):
+    assert os.path.isfile(outcar_dir), f"File {outcar_dir} does not exist"
+    with open(outcar_dir, "r") as f:
+        first_line = f.readline()
+        assert "vasp" in first_line, f"File {outcar_dir} Might not contain \"vasp\", might not be an OUTCAR file format "
+    f.close()
 
-def check_file_exist(test_result_file_name="results")-> str:
-    file_name = test_result_file_name+".f.out"
-    # Check if the file exists
-    if os.path.isfile(file_name):
-        print(f"The file '{file_name}' exists.")
-    else:
-        warnings.warn(f"The file '{file_name}' does not exist.", RuntimeWarning)
-        # print(f"The file '{file_name}' does not exist.")
-    return file_name
-
+def get_dict_max_len(data_dict:dict)->int:
+    len_list_data = []
+    for key, item in data_dict.items():
+        len_list_data.append(len(item))
+    maxlen = max(len_list_data)
+    # print(maxlen)
+    return maxlen
 
 if __name__=="__main__":
     line = "energy without entropy =     -0.64910114  energy(sigma->0) =     -878.57396738"

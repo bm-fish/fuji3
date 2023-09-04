@@ -1,0 +1,24 @@
+[build-system]
+requires = [ "setuptools", "setuptools-scm" ]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mdkit"
+version = "0.0.1"
+description = "Toolkit for processing AIMD result from VASP"
+requires-python = ">=3.8"
+authors = [
+    { name="bmfish", email="x@qq.com" },
+  ]
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+  ]
+dependencies = [
+  "matplotlib>=3.0",
+  "numpy"
+  ]
+[project.scripts]
+mdkit = "mdkit.main:main"

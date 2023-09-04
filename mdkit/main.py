@@ -1,10 +1,10 @@
 import sys
 import os
-import util
 import argparse
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 # print(sys.path)
 from mdkit.aimd.outcar import energy_run
+from mdkit import util
 
 # print(sys.path)
 # sys.path.append("/Users/bm.fish/vaspmd")

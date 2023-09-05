@@ -169,7 +169,7 @@ def energy_run(args):
     outcar1 = Outcar(outcar_absdir)
     outcar1.read_energy_term()
     print(outcar1.energy_keywords)
-    # outcar1.write_energy_to_csv("outcar.csv")
+    outcar1.write_energy_to_csv("outcar.csv")
     # print(list(outcar1.energy_keywords.keys()))
     # print(outcar1.energy["free  energy   TOTEN"])
     if args.plt is True:

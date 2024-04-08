@@ -1,5 +1,5 @@
 # Toolkit for processing AIMD result from VASP
-## Useage:
+## Usage:
     mdkit energy -i ./OUTCAR
     # Output MD run energy statistics of system energy, temperature and nose-hoover thermostat
     mdkit energy -i ./OUTCAR -p
